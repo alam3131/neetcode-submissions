@@ -1,0 +1,25 @@
+import sys
+
+class MinStack:
+
+    def __init__(self):
+        self.minimum = [sys.maxsize]
+        self.stack = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        
+        if val <= self.minimum[-1]:
+            self.minimum.append(val)
+
+    def pop(self) -> None:
+        num = self.stack.pop()
+
+        if num == self.minimum[-1]:
+            self.minimum.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.minimum[-1]
